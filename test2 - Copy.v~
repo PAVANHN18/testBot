@@ -1,0 +1,24 @@
+module traverse (matrix, start_x, start_y, clk, rst);
+input [1:0] matrix [7:0][7:0];
+input [1:0] start_x;
+input [1:0] start_y;
+input clk;
+input rst;
+reg [1:0] curr_x;
+reg [1:0] curr_y;
+reg found_label;
+reg found_target;
+reg [7:0] i;
+reg [7:0] j;
+
+
+always @(posedge clk)
+for (i = curr_x; i < 8; i += 1)begin
+for (j = curr_y; j < 8; j += 1)begin
+if (matrix[i][j] == 1)
+begin 
+$display("found_target at (%d,%d)",i,j);
+end
+end
+end
+endmodule
